@@ -326,24 +326,24 @@ describe('War', () => {
         expect(war.saxonAttack.length).toEqual(0);
       });
 
-      // it('should make a Viking receiveDamage() equal to the strength of a Saxon', () => {
-      //   let oldHealth = viking.health;
-      //   war.saxonAttack();
-      //   expect(viking.health).toEqual(oldHealth - saxon.strength);
-      // });
-      //
-      // it('should remove dead vikings from the army', () => {
-      //   for (let i = 0; i < 12; i++) {
-      //     war.saxonAttack();
-      //   }
-      //   expect(war.vikingArmy.length).toEqual(0);
-      // });
-      //
-      // it('should return result of calling receiveDamage() of a Viking with the strength of a Saxon', () => {
-      //   expect(war.saxonAttack()).toEqual(
-      //     `${viking.name} has received ${saxon.strength} points of damage`
-      //   );
-      // });
+      it('should make a Viking receiveDamage() equal to the strength of a Saxon', () => {
+        let oldHealth = viking.health;
+        war.saxonAttack();
+        expect(viking.health).toEqual(oldHealth - saxon.strength);
+      });
+
+      it('should remove dead vikings from the army', () => {
+        for (let i = 0; i < 12; i++) {
+          war.saxonAttack();
+        }
+        expect(war.vikingArmy.length).toEqual(0);
+      });
+
+      it('should return result of calling receiveDamage() of a Viking with the strength of a Saxon', () => {
+        expect(war.saxonAttack()).toEqual(
+          `${viking.name} has received ${saxon.strength} points of damage`
+        );
+      });
     });
 
     describe('showStatus() method', () => {
@@ -355,23 +355,27 @@ describe('War', () => {
         expect(war.showStatus.length).toEqual(0);
       });
 
-      // it('should return "Vikings have won the war of the century!", if the Saxons array is empty', () => {
-      //   war.vikingAttack();
-      //   expect(war.showStatus()).toEqual('Vikings have won the war of the century!');
-      // });
-      //
-      // it('should return "Saxons have fought for their lives and survived another day...", if the Vikings array is empty', () => {
-      //   for (let i = 0; i < 12; i++) {
-      //     war.saxonAttack();
-      //   }
-      //   expect(war.showStatus()).toEqual(
-      //     'Saxons have fought for their lives and survived another day...'
-      //   );
-      // });
-      //
-      // it('should return "Vikings and Saxons are still in the thick of battle.", if there are still both Vikings and Saxons', () => {
-      //   expect(war.showStatus()).toEqual('Vikings and Saxons are still in the thick of battle.');
-      // });
+      it('should return "Vikings have won the war of the century!", if the Saxons array is empty', () => {
+        war.vikingAttack();
+        expect(war.showStatus()).toEqual(
+          'Vikings have won the war of the century!'
+        );
+      });
+
+      it('should return "Saxons have fought for their lives and survived another day...", if the Vikings array is empty', () => {
+        for (let i = 0; i < 12; i++) {
+          war.saxonAttack();
+        }
+        expect(war.showStatus()).toEqual(
+          'Saxons have fought for their lives and survived another day...'
+        );
+      });
+
+      it('should return "Vikings and Saxons are still in the thick of battle.", if there are still both Vikings and Saxons', () => {
+        expect(war.showStatus()).toEqual(
+          'Vikings and Saxons are still in the thick of battle.'
+        );
+      });
     });
   });
 });
