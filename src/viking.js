@@ -41,11 +41,9 @@ class Saxon extends Soldier {
   receiveDamage(damage) {
     let originalDamage = damage;
     this.health -= damage;
-    if (this.health !== 0) {
-      return `A Saxon has received ${originalDamage} points of damage`;
-    } else {
+    if (this.health <= 0) {
       return `A Saxon has died in combat`;
-    }
+    } else return `A Saxon has received ${originalDamage} points of damage`;
   }
 }
 
@@ -65,6 +63,7 @@ class War {
   vikingAttack() {
     const randomViking = Math.floor(Math.random() * this.vikingArmy.length);
     const randomSaxon = Math.floor(Math.random() * this.saxonArmy.length);
+
     const result = this.saxonArmy[randomSaxon].receiveDamage(
       this.vikingArmy[randomViking].strength
     );
